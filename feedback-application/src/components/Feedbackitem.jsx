@@ -1,17 +1,20 @@
 import React, { useState } from 'react'
-
-function Feedbackitem() {
-const [rating,setRating]= useState(7)
-const [text,setText]= useState(' This is an ex of fb item')
-
+import Card from './shared/Card'
+import PropTypes from 'prop-types'
+import { FaTimes } from 'react-icons/fa';
+function Feedbackitem({item}) {
 
   return (
-    <div className='card'>
-        <div className="num-display">{rating}</div>
-        <div className="text-display">{text}</div>
+    <Card >
+        <div className="num-display">{item.rating}</div>
+        <button className='close'><FaTimes color='purple'/></button>
+        <div className="text-display">{item.text}</div>
        
-    </div>
+    </Card>
   )
 }
 
+Feedbackitem.propTypes ={
+    item: PropTypes.object.isRequired
+}
 export default Feedbackitem

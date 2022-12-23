@@ -1,8 +1,10 @@
-import React from 'react'
-import PropTypes from "prop-types";
+import { useContext } from "react"; // include useContext
+import FeedbackContext from "../context/FeedbackContext"; // import feedback context
 
-function FeedbackStats({feedback}) {
 
+function FeedbackStats() {
+
+  const {feedback} = useContext(FeedbackContext) // use the imported feedbackcontext here
     //array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
 
 let average = feedback.reduce((total,currentval)=>{
@@ -11,7 +13,6 @@ let average = feedback.reduce((total,currentval)=>{
 
 average=average.toFixed(1).replace(/[.,]0$/, '') // setting average value with atleast one decimal
 //replace : if 0 next to decimal replace with nothing
-console.log(average)
   return (
     <div className='feedback-stats'>
       <h4>{feedback.length} Reviews</h4>
@@ -19,7 +20,5 @@ console.log(average)
     </div>
   )
 }
-FeedbackStats.propTypes={
-    feedback: PropTypes.array.isRequired
-}
+
 export default FeedbackStats

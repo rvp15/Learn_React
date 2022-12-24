@@ -12,11 +12,16 @@ function Feedbackform() {
   const [btnDisabled, setBtnDisabled] = useState(true);
   const [message, setMessage] = useState("");
 
-  const { addFeedback,feedbackEdit } = useContext(FeedbackContext); // use the imported feedbackcontext here
+  const { addFeedback,feedbackEdit,updateFeedback } = useContext(FeedbackContext); // use the imported feedbackcontext here
 
   useEffect(()=>{
-
+if(feedbackEdit.edit === true){
+  setBtnDisabled(false)
+  setText(feedbackEdit.item.text)
+  setRating(feedbackEdit.item.rating)
+}
   },[feedbackEdit])
+
   const handleChange = (e) => {
     if (text === "") {
       setBtnDisabled(true);
@@ -38,7 +43,12 @@ function Feedbackform() {
         text,
         rating,
       };
-      addFeedback(newFeedback);
+      if(feedbackEdit.edit === true){
+        updateFeedback(feedbackEdit.item.id,newFeedback)
+      }else{
+         addFeedback(newFeedback);
+      }
+     
       setText("");
     }
   };

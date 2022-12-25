@@ -5,8 +5,6 @@ import Header from "./components/Header";
 import AboutPage from "./pages/AboutPage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { FeedbackProvider } from "./context/FeedbackContext";
-
-import { Link } from "react-router-dom";
 import AboutIcon from "./components/AboutIcon";
 function App() {
   return (
